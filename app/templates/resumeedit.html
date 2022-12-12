@@ -1,0 +1,150 @@
+
+
+    {%extends 'base1.html'%}
+
+    {%load static%}
+    
+    {%block content%}
+    
+    <body class="bg-primary">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">Resume Builder</h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        {%if resume_builder%}
+                                        <form action="{%url 'resumeedit' pk=request.session.id%}" method="POST"
+                                            enctype="multipart/form-data">
+                                            {%csrf_token%}
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text" name="name"
+                                                            placeholder="" value="{{resume_builder.name}}"
+                                                            required />
+                                                        <label for="inputFirstName">Name</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form- mb-3">
+                                                <input class="form-control" id="inputEmail" type="email"
+                                                    placeholder="Email address" name='email' value="{{resume_builder.email}}"
+                                                    required />
+                                            </div>
+    
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text"
+                                                            name="contact" value="{{resume_builder.contact}}" required />
+                                                        <label for="inputContact"> Contact</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text"
+                                                            name="state" placeholder="" value="{{resume_builder.state}}" required />
+                                                        <label for="inputFirstName">State</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text" name="city"
+                                                            placeholder="" value="{{resume_builder.city}}" required />
+                                                        <label for="inputFirstName">City</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+    
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text"
+                                                            name="address" placeholder="" required  value="{{resume_builder.address}}"/>
+                                                        <label for="inputFirstName"> Address</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputFirstName" type="text"
+                                                            name="skill" placeholder="" value='{{resume_builder.skills}}'
+                                                            required />
+                                                        <label for="inputFirstName">Technical skills</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text"
+                                                            name="education" placeholder="" required value="{{resume_builder.education}}" />
+                                                        <label for="inputFirstName">Education</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text"
+                                                            name="language" placeholder="" value="{{resume_builder.language}}" required />
+                                                        <label for="inputFirstName">Language Speak</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-md-12 col-sm-8">
+                                                <h6 class="text-muted">your linkedin link</h6>
+    
+                                                <div class="input-group"> <span class="input-group-addon"
+                                                        id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
+                                                    <input type="file" name="link" id="file_nm"
+                                                        class="form-control upload" placeholder=""
+                                                        aria-describedby="file_upload" required>
+                                                </div>
+    
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12 mt-5">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <textarea class="form-control" id="companyname" type="text"
+                                                            name="summary" rows="2" value="{{resume_builder.summary}}"></textarea>
+                                                        <label for="inputFirstName">Summary.....</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+    
+    
+                                    </div>
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid"><button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </main>
+        </div>
+    
+        {%endblock content%}    
