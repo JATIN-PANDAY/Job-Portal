@@ -1,0 +1,146 @@
+{%extends 'company/base.html'%}
+
+{%block content%}
+   
+   <body class="bg-primary">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Job Post Form</h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="container">
+
+                                        {% if msg %}
+                                        <h4 style="color:green">{{msg}}</h4>
+                                        {%endif%}
+                                        
+                                        {%if masg%}
+                                        <h5 class="text-danger" style="margin-left: 20%;">{{masg}}</h5>
+                                        {%endif%}
+
+                                    </div>
+                                        <form action="{% url 'jobdetailsubmit'  %}" method="POST" enctype="multipart/form-data">
+                                            {%csrf_token%}
+                                                <div class="row mb-3">
+                                                    <div class="col-md-12">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="companyname" type="text" name="companyname" placeholder="Enter your first name"required/>
+                                                            <label for="inputFirstName">Company Name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <input class="form-control" id="companyname" type="tel" name="companycontact" placeholder="Enter your first name"  required/>
+                                                                <label for="inputFirstName">Company Contact</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <input class="form-control" id="companyname" type="text" name="companyaddress" placeholder="Enter your first name" required/>
+                                                                <label for="inputFirstName">Company Address</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <input class="form-control" id="inputFirstName" type="text" name="jobname" placeholder="Enter your first name" required/>
+                                                                <label for="inputFirstName">Job Name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <input class="form-control" id="companyname" type="text" name="companywebsite" placeholder="Enter your first name" required/>
+                                                                <label for="inputFirstName">Company Website</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com"   name='companyemail'required/>
+                                                <label for="inputEmail">Email address</label>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text" name="jobdescription" required placeholder="Enter your first name" value=""/>
+                                                        <label for="inputFirstName">Job description</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="companyname" type="text" name="qualification" placeholder="Enter your first name" required value=""/>
+                                                        <label for="inputFirstName">Qualification</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-12">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="companyname" type="text" name="responbilites" required placeholder="Enter your first name" value=""/>
+                                                            <label for="inputFirstName">Responbilites</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-12">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="companyname" type="text" name="location" placeholder="Enter your first name" value=""required/>
+                                                            <label for="inputFirstName">Location</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-12">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="companyname" type="text" name="experience" placeholder="Enter your first name" value=""required/>
+                                                            <label for="inputFirstName">Experience</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-12">
+                                                        <div class="form-floating mb-3 mb-md-0">
+                                                            <input class="form-control" id="companyname" type="text" name="salary" placeholder="Enter your first name" value=""required/>
+                                                            <label for="inputFirstName">Salary Package</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-12 col-sm-8">
+                                                    <div class="input-group"> <span class="input-group-addon" id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
+                                                      <input type="file" name="logo" id="file_nm" class="form-control upload" placeholder="" aria-describedby="file_upload" required>
+                                                    </div>
+    
+                                            </div>
+                                            </div>
+                                            <div class="mt-4 mb-0">
+                                                <div class="d-grid"><button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+{%endblock content%}

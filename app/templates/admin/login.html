@@ -1,0 +1,48 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href=" {% static 'css/login.css' %}" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div id="login-form-wrap">
+    <h2> Admin Login</h2>
+    <form id="login-form" action="{%url 'adminlogin'%}" method="post">
+      {%csrf_token%}
+
+      {%if msg%}
+      <h6 style="color:red">{{msg}}</h6>
+      {%endif%}
+
+
+      <p>
+        <input type="text" id="name" name="username" placeholder="Username" required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+
+      <p>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password " required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+
+      <p>
+        <input type="submit" id="login" value="Login">
+      </p>
+    </form>
+  </div>
+  <!--create-account-wrap-->
+  <!--login-form-wrap-->
+  <!-- partial -->
+
+</body>
+
+</html>

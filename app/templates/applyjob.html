@@ -1,0 +1,175 @@
+{%extends 'base1.html'%}
+
+{%load static%}
+
+{%block content%}
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Apply For Job</h3>
+                                </div>
+                                <div class="card-body">
+
+                                    {% if msg %}
+                                    <center>
+
+                                        <h4 style="color:green">{{msg}}</h4>
+                                        <a href='/userhomepage'><button class="btn btn-warning">Back</button></a>
+                                    </center>
+                                    </center>
+
+                                    {%endif%}
+
+                                    {%if user%}
+                                    {%if cand%}
+                                    {%if job%}
+                                    <form action="{% url 'applyjob' pk=job.id %}" method="POST"
+                                        enctype="multipart/form-data">
+                                        {%csrf_token%}
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text" name="name"
+                                                        placeholder="" value="{{user.firstname}} {{cand.lastname}}"
+                                                        required />
+                                                    <label for="inputFirstName"> Name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputEmail" type="email"
+                                                        name="email" value="{{request.session.email}}" required />
+                                                    <label for="inputEmail"> Email</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text"
+                                                        name="contact" value="{{cand.contact}}" required />
+                                                    <label for="inputContact"> Contact</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text"
+                                                        name="state" placeholder="" value="{{cand.state}}" required />
+                                                    <label for="inputFirstName">State</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text" name="city"
+                                                        placeholder="" value="{{cand.city}}" required />
+                                                    <label for="inputFirstName">City</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text"
+                                                        name="address" placeholder="" required />
+                                                    <label for="inputFirstName"> Address</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputFirstName" type="text"
+                                                        name="jobname" placeholder="" value='{{job.jobname}}'
+                                                        required />
+                                                    <label for="inputFirstName">Job Name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text"
+                                                        name="qualification" placeholder="" required value="" />
+                                                    <label for="inputFirstName">Qualification</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text"
+                                                        name="experience" placeholder="" value="" required />
+                                                    <label for="inputFirstName">Experience</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="companyname" type="text"
+                                                        name="salary" placeholder="" value="" required />
+                                                    <label for="inputFirstName">Salary Excepted</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 col-sm-8">
+                                            <h6 class="text-muted">upload resume</h6>
+
+                                            <div class="input-group"> <span class="input-group-addon"
+                                                    id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
+                                                <input type="file" name="resume" id="file_nm"
+                                                    class="form-control upload" placeholder=""
+                                                    aria-describedby="file_upload" required>
+                                            </div>
+
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12 mt-5">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <textarea class="form-control" id="companyname" type="text"
+                                                        name="desc" rows="2"></textarea>
+                                                    <label for="inputFirstName">Comment.....</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                </div>
+                                <div class="mt-4 mb-0">
+                                    <div class="d-grid"><button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                                </form>
+                                {%endif%}
+                                {%endif%}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </main>
+    </div>
+
+    {%endblock content%}

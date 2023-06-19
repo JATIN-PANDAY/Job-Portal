@@ -1,0 +1,62 @@
+{%extends 'company/base.html'%}
+
+{%block content%}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-5">Company List</h1>
+            <ol class="breadcrumb mb-4">
+            </ol>
+            <table id="datatablesSimple" class="table table-hover table-striped table-light md-12">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Company Website</th>
+                        <th>Company Email</th>
+                        <th>Company Contact</th>
+                        <th>Company Address</th>
+                        <th>Company location</th>
+                        <th>Job Name</th>
+                        <th>Qualification</th>
+                        <th>Rsposibilites</th>
+
+                        <th>Experience</th>
+                        <th>Salarypackage</th>
+                        <th>Job descreption</th>
+                        <th>Logo</th>
+                    </tr>
+                </thead>
+
+                {%if all_data%}
+
+
+                <tbody>
+                    {%for i in all_data%}
+                    <tr>
+                        <td>{{i.companyname}}</td>
+                        <td>{{i.companywebsite}}</td>
+                        <td>{{i.companyemail}}</td>
+                        <td>{{i.companycontact}}</td>
+                        <td>{{i.companyaddress}}</td>
+                        <td>{{i.companylocation}}</td>
+                        <td>{{i.jobname}}</td>
+                        <td>{{i.qualification}}</td>
+                        <td>{{i.resposibilites}}</td>
+                        <td>{{i.experience}}</td>
+                        <td>{{i.salarypackage}}</td>
+                        <td>{{i.jobdescreption}}</td>
+                        <td>{{i.logo_pic}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+                {%endif%}
+
+            </table>
+            <a href="companyindex">
+                <div class="btn btn-dark">Back</div>
+            </a>
+
+        </div>
+    </main>
+    {%endblock content%}

@@ -1,0 +1,79 @@
+{%extends 'admin/base1.html'%}
+
+{%block content%}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">User List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="/adminindex">
+                        <div class="btn btn-dark">Back</div>
+                    </a></li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <table id="datatablesSimple" class="table table-hover table-striped table-light md-12">
+                        <thead>
+                            <tr>
+                                <th>Company_id</th>
+                                <th>Job Name</th>
+                                <th>Company Name</th>
+                                <th>Company Address</th>
+                                <th>Job description</th>
+                                <th>Qualifications</th>
+                                <th>Resposibilites</th>
+                                <th>Location</th>
+                                <th>Company Email</th>
+                                <th>Contact</th>
+                                <th>Website</th>
+                                <th>Salary</th>
+                                <th>Exeperience</th>
+                                <th>Company logo_pic</th>
+                                <th>Action</th>
+
+
+
+                            </tr>
+                        </thead>
+
+                        {%if list%}
+
+
+                        <tbody>
+                            {%for i in list%}
+                            <tr>
+                                <td>{{i.company_id}}</td>
+                                <td>{{i.jobname}}</td>
+                                <td>{{i.companyname}}</td>
+                                <td>{{i.companyaddress}}</td>
+                                <td>{{i.jobdescreption}}</td>
+                                <td>{{i.qualification}}</td>
+                                <td>{{i.resposibilites}}</td>
+                                <td>{{i.location}}</td>
+                                <td>{{i.companyemail}}</td>
+                                <td>{{i.companycontact}}</td>
+                                <td>{{i.companywebsite}}</td>
+                                <td>{{i.salarypackage}}</td>
+                                <td>{{i.experience}}</td>
+                                <td><a href="{{MEDIA_URL}}{{i.logo_pic.url}}">{{i.logo_pic}}</a></td>
+                                <td>
+                                    <form action="{% url 'jobdelete' i.id %}" method="POST">
+                                        {%csrf_token%}
+                                        <button class="btn btn-primary">Delete</button>
+                                    </form>
+                                </td>
+
+
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                        {%endif%}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    {%endblock content%}

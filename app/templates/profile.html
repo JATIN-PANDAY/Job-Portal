@@ -1,0 +1,68 @@
+{%extends 'base1.html'%}
+
+{%load static%}
+
+{%block content%}
+
+<div class="container-xxl py-5">
+  <div class="container">
+    <h1 class="text-center mb-5 wow fadeInUp text-dark" data-wow-delay="0.1s">Update Your Profile</h1>
+
+
+  </div>
+</div>
+<form class="row g-3" method="post" action=" {% url 'profileupdate' pk=request.session.id %}"
+  enctype="multipart/form-data">
+  {%csrf_token%}
+  <div class="col-md-6">
+    <label for="firstname" class="form-label">Firstname</label>
+    <input type="text" class="form-control" id="inputfirstname" placeholder="First Name" value="{{can.firstname}}"
+      name="firstname">
+  </div>
+  <div class="col-md-6">
+    <label for="lastname" class="form-label">Lastname</label>
+    <input type="text" class="form-control" id="inputlastname" name="lastname" placeholder="Last Name"
+      value={{can.lastname}}>
+  </div>
+
+
+  <div class="col-md-6">
+    <label for="contact" class="form-label">Contact</label>
+    <input type="text" class="form-control" id="inputcontact" name="contact" value="{{can.contact}}">
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+
+    {% if can.state%}
+
+    <input type="text" class="form-control" id="inputstate" name="state" value="{{can.state}}">
+
+    {%else%}
+
+
+    <select id="inputState" class="form-select" name="state">
+      <option selected>Choose...</option>
+      <option>Uttar Pradesh</option>
+      <option>Bihar</option>
+      <option>Andra Pradesh</option>
+      <option>Uttarakhand</option>
+      <option>Maharestra</option>
+
+    </select>
+
+    {%endif%}
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" class="form-control" id="inputCity" name="city" value="{{can.city}}">
+  </div>
+
+
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+</form>
+
+{%endblock content%}

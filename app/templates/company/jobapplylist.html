@@ -1,0 +1,66 @@
+{%extends 'company/base.html'%}
+
+{%block content%}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-5 mx-5">Apply Candidate List</h1>
+            <ol class="breadcrumb mb-4">
+            </ol>
+            <div class="card mb-5">
+                <table id="datatablesSimple" class="table table-hover table-striped table-light md-12">
+                    <thead>
+                        <tr>
+                            <th> Name</th>
+                            <th> Email</th>
+                            <th> Contact</th>
+                            <th>Address</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>Job Name</th>
+                            <th>Experience</th>
+                            <th>Qualification</th>
+
+                            <th>Salarypackage</th>
+                            <th>Job descreption</th>
+                            <th>Resume </th>
+                        </tr>
+                    </thead>
+
+                    {%if all_jobapply%}
+
+
+                    <tbody>
+                        {%for i in all_jobapply%}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.contact}}</td>
+                            <td>{{i.address}}</td>
+                            <td>{{i.state}}</td>
+                            <td>{{i.city}}</td>
+                            <td>{{i.jobname}}</td>
+                            <td>{{i.qualification}}</td>
+                            <td>{{i.exp}}</td>
+                            <td>{{i.salaryexpected}}</td>
+                            <td>{{i.desc}}</td>
+                            <td>
+                            <a href="{{MEDIA_URL}}{{i.resume.url}}">{{i.resume}}
+                                    
+                            </td>
+
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                    {%endif%}
+
+                </table>
+            </div>
+            <a href="companyindex">
+                <div class="btn btn-dark">Back</div>
+            </a>
+
+        </div>
+    </main>
+    {%endblock content%}

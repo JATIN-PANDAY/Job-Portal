@@ -1,0 +1,57 @@
+{%extends 'admin/base1.html'%}
+
+{%block content%}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">User List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="/adminindex">
+                        <div class="btn btn-dark">Back</div>
+                    </a></li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <table id="datatablesSimple" class="table table-hover table-striped table-light md-12">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>is_active</th>
+                                <th>is_created</th>
+                                <th>OTP</th>
+                                <th>is_verified</th>
+                                <th>is_updated</th>
+                            </tr>
+                        </thead>
+
+                        {%if user%}
+
+
+                        <tbody>
+                            {%for i in user%}
+                            <tr>
+                                <td>{{i.role}}</td>
+                                <td>{{i.email}}</td>
+                                <td>{{i.password}}</td>
+                                <td>{{i.is_active}}</td>
+                                <td>{{is_created}}</td>
+                                <td>{{i.otp}}</td>
+                                <td>{{i.is_verified}}</td>
+                                <td>{{is_updated}}</td>
+
+                                <td>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                        {%endif%}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    {%endblock content%}

@@ -1,0 +1,63 @@
+{%extends 'admin/base1.html'%}
+
+{%block content%}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-5">Company List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="adminindex">
+                        <div class="btn btn-dark">Back</div>
+                    </a></li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <table id="datatablesSimple" class="table table-hover table-striped table-light md-12">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th>Email</th>
+                                <th>Verify_at</th>
+                                <th>Created_at</th>
+                                <th>Updated_at</th>
+                                <th>Verify</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        {%if all_comp%}
+
+
+                        <tbody>
+                            {%for i in all_comp%}
+                            <tr>
+                                <td>{{i.role}}</td>
+                                <td>{{i.email}}</td>
+                                <td>{{i.is_verified}}</td>
+                                <td>{{i.is_created}}</td>
+                                <td>{{i.is_updated}}</td>
+                                <td>
+                                    <form action="{% url 'companyverifypage' pk=i.id   %}" method='POST'>
+                                        {%csrf_token%}
+                                        <button class="btn btn-primary">Update</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{% url 'companydelete' pk=i.id   %}" method='POST'>
+                                        {%csrf_token%}
+                                        <button class="btn btn-primary">Delete</button>
+                                    </form>
+                                </td>
+
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                        {%endif%}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    {%endblock content%}
