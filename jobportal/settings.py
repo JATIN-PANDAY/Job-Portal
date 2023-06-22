@@ -74,10 +74,11 @@ WSGI_APPLICATION = 'jobportal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -133,6 +134,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 WHITELISTED_IMAGE_TYPES = {
     'jpeg': 'image/jpeg',
     'jpg': 'image/jpeg',
-    'png': 'image/png'
+    'png': 'image/png',
+    'pdf': 'image/pdf'
 }
+
+WHITELISTED_RESUME_TYPES = {
+    'PDF': 'image/PDF',
+    'pdf': 'image/pdf',
+    'DOC': 'image/DOC',
+    'doc': 'image/doc'
+}
+
 UPLOAD_FILE_MAX_SIZE = 1048576  # bytes - approx 1 mb

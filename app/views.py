@@ -328,7 +328,7 @@ def applyjob(request,pk):
     if user:
         cand=Candidate.objects.get(user_id=user)
         job=jobpost.objects.get(id=pk)
-
+        
         edu=request.POST['qualification']
         salary=request.POST['salary']
         exp=request.POST['experience']
@@ -343,11 +343,19 @@ def applyjob(request,pk):
 
         desc=request.POST['desc']
 
-        newapply=Applylist.objects.create(candidate=cand,name=name,email=email,contact=contact,state=state,city=city,address=address,
-                                            jobname=jname,qualification=edu,experience=exp,salaryexpected=salary,desc=desc,resume=resume)
-        message='Apply done successfully'
+        # resumme validation
+       
+        extension = resume.name.split('.')[-1]
+        if not extension or extension.lower() not in settings.WHITELISTED_RESUME_TYPES.keys():
+            message =  " Invalid Resume  !!"
+            return render (request,'applyjob.html',{'mesg':message})
+            
+        else:
+            newapply=Applylist.objects.create(candidate=cand,name=name,email=email,contact=contact,state=state,city=city,address=address,
+                                                jobname=jname,qualification=edu,experience=exp,salaryexpected=salary,desc=desc,resume=resume)
+            message='Apply done successfully'
 
-        return render(request,'applyjob.html',{'msg':message})  
+            return render(request,'applyjob.html',{'msg':message})
 
 
 

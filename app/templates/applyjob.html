@@ -23,6 +23,14 @@
                                         <h4 style="color:green">{{msg}}</h4>
                                         <a href='/userhomepage'><button class="btn btn-warning">Back</button></a>
                                     </center>
+
+                                    {%endif%}
+
+                                    {% if mesg %}
+                                    <center>
+
+                                        <h4 style="color:red">{{mesg}}</h4>
+                                        <a href='/userhomepage'><button class="btn btn-warning">Back</button></a>
                                     </center>
 
                                     {%endif%}
@@ -33,6 +41,9 @@
                                     <form action="{% url 'applyjob' pk=job.id %}" method="POST"
                                         enctype="multipart/form-data">
                                         {%csrf_token%}
+
+
+
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-3 mb-md-0">
@@ -43,7 +54,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-3 mb-md-0">
@@ -53,7 +64,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
 
                                         <div class="row mb-3">
                                             <div class="col-md-12">
@@ -157,7 +168,7 @@
 
                                 </div>
                                 <div class="mt-4 mb-0">
-                                    <div class="d-grid"><button type="submit" class="btn btn-primary">Update</button>
+                                    <div class="d-grid"><button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
                                 </form>

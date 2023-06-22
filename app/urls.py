@@ -13,7 +13,6 @@ urlpatterns = [
     path('joblist',views.joblist,name='joblist'),
     path('jobdetail',views.jobdetail,name='jobdetail'),
 
-
     path('SignupPage',views.SignupPage,name='SignupPage'),
     path('register',views.RegisterUser,name='register'),
     path('otppage',views.otppage,name='otppage'),
